@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Egglicious Sydney | Surti-Style Egg Street Food in Blacktown</title>
+  <meta name="description" content="Egglicious Sydney in Blacktown serves Surti-style egg dishes, Indian street food, omelettes, bhurji, gravy delights, pav, drinks and takeaway favourites." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #120b06;
+      --card: #21130a;
+      --card-2: #2b190d;
+      --text: #fff9ef;
+      --muted: #dcc8ae;
+      --gold: #ffbd35;
+      --orange: #ff6b1a;
+      --red: #d9301d;
+      --cream: #fff1d2;
+      --shadow: 0 18px 60px rgba(0,0,0,.35);
+      --radius: 28px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top left, rgba(255,189,53,.22), transparent 32%), var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(1180px, calc(100% - 36px)); margin: 0 auto; }
+
+    .nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(18, 11, 6, .82);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 16px 0; }
+    .logo { display: flex; align-items: center; gap: 11px; font-weight: 900; letter-spacing: -.04em; font-size: 1.25rem; }
+    .logo-mark {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--orange));
+      display: grid; place-items: center; color: #351400; box-shadow: 0 10px 30px rgba(255,107,26,.35);
+    }
+    .nav-links { display: flex; align-items: center; gap: 24px; font-size: .95rem; color: var(--muted); font-weight: 700; }
+    .nav-links a:hover { color: var(--gold); }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      border: 0; border-radius: 999px; padding: 13px 20px;
+      font-weight: 900; cursor: pointer; transition: .2s ease;
+    }
+    .btn-primary { background: linear-gradient(135deg, var(--gold), var(--orange)); color: #2a1103; box-shadow: 0 16px 36px rgba(255,107,26,.3); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 22px 46px rgba(255,107,26,.42); }
+    .btn-ghost { border: 1px solid rgba(255,255,255,.18); color: var(--cream); background: rgba(255,255,255,.06); }
+    .btn-ghost:hover { background: rgba(255,255,255,.12); }
+
+    .hero { padding: 82px 0 52px; position: relative; }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 46px; align-items: center; }
+    .badge { display: inline-flex; align-items: center; gap: 10px; padding: 9px 14px; border: 1px solid rgba(255,189,53,.3); background: rgba(255,189,53,.08); color: var(--gold); border-radius: 999px; font-weight: 800; margin-bottom: 22px; }
+    h1 { font-size: clamp(3rem, 7vw, 6.7rem); line-height: .9; letter-spacing: -.075em; margin-bottom: 22px; }
+    h1 span { color: var(--gold); text-shadow: 0 0 45px rgba(255,189,53,.25); }
+    .hero p { color: var(--muted); max-width: 620px; font-size: 1.13rem; margin-bottom: 28px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 28px; }
+    .quick-info { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 32px; }
+    .info-card { background: rgba(255,255,255,.055); border: 1px solid rgba(255,255,255,.09); border-radius: 20px; padding: 16px; }
+    .info-card strong { display: block; color: var(--gold); font-size: .9rem; margin-bottom: 4px; }
+    .info-card span { color: var(--cream); font-weight: 800; font-size: .93rem; }
+
+    .hero-visual {
+      min-height: 560px; position: relative; border-radius: 40px; padding: 26px;
+      background: linear-gradient(145deg, rgba(255,189,53,.18), rgba(255,107,26,.08));
+      border: 1px solid rgba(255,255,255,.11);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .egg-plate {
+      position: absolute; inset: 42px 24px auto auto; width: min(440px, 86%); aspect-ratio: 1;
+      border-radius: 50%; background:
+        radial-gradient(circle at 50% 50%, #ffb329 0 17%, transparent 18%),
+        radial-gradient(circle at 50% 50%, #fff7db 0 44%, transparent 45%),
+        radial-gradient(circle at 50% 50%, #7a2515 0 58%, transparent 59%),
+        radial-gradient(circle at 50% 50%, #ff6b1a 0 70%, transparent 71%);
+      box-shadow: 0 35px 80px rgba(0,0,0,.38), inset 0 -20px 35px rgba(0,0,0,.2);
+    }
+    .egg-plate::before, .egg-plate::after {
+      content: ''; position: absolute; border-radius: 999px; background: rgba(255,255,255,.15);
+      filter: blur(.5px);
+    }
+    .egg-plate::before { width: 170px; height: 28px; left: 70px; top: 86px; transform: rotate(-18deg); }
+    .egg-plate::after { width: 130px; height: 22px; right: 60px; bottom: 92px; transform: rotate(-28deg); }
+    .floating-card { position: absolute; background: rgba(18,11,6,.86); border: 1px solid rgba(255,255,255,.12); border-radius: 24px; padding: 18px; box-shadow: var(--shadow); }
+    .floating-card h3 { color: var(--gold); font-size: 1rem; margin-bottom: 6px; }
+    .floating-card p { color: var(--muted); font-weight: 700; font-size: .92rem; }
+    .float-1 { left: 28px; top: 46px; width: 215px; }
+    .float-2 { right: 26px; bottom: 36px; width: 238px; }
+    .float-3 { left: 34px; bottom: 86px; width: 220px; }
+
+    section { padding: 72px 0; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 34px; }
+    .eyebrow { color: var(--gold); font-weight: 900; text-transform: uppercase; letter-spacing: .12em; font-size: .82rem; margin-bottom: 8px; }
+    h2 { font-size: clamp(2rem, 4vw, 3.4rem); line-height: 1; letter-spacing: -.055em; }
+    .section-head p { color: var(--muted); max-width: 470px; }
+
+    .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .menu-card { background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.1); border-radius: var(--radius); padding: 24px; position: relative; overflow: hidden; min-height: 215px; }
+    .menu-card::after { content: ''; position: absolute; width: 120px; height: 120px; border-radius: 50%; right: -38px; top: -38px; background: rgba(255,189,53,.12); }
+    .menu-card .icon { width: 54px; height: 54px; border-radius: 18px; background: rgba(255,189,53,.14); display: grid; place-items: center; font-size: 1.55rem; margin-bottom: 18px; }
+    .menu-card h3 { font-size: 1.26rem; margin-bottom: 8px; letter-spacing: -.025em; }
+    .menu-card p { color: var(--muted); margin-bottom: 18px; }
+    .price { color: var(--gold); font-weight: 900; }
+
+    .split { display: grid; grid-template-columns: .88fr 1.12fr; gap: 26px; align-items: stretch; }
+    .panel { background: var(--card); border: 1px solid rgba(255,255,255,.1); border-radius: var(--radius); padding: 30px; box-shadow: var(--shadow); }
+    .panel h3 { font-size: 1.6rem; margin-bottom: 12px; letter-spacing: -.04em; }
+    .panel p, .panel li { color: var(--muted); }
+    .features { display: grid; gap: 14px; margin-top: 22px; }
+    .feature { display: flex; gap: 13px; align-items: flex-start; padding: 14px; background: rgba(255,255,255,.055); border-radius: 18px; }
+    .feature b { color: var(--cream); }
+    .feature span:first-child { color: var(--gold); font-size: 1.2rem; }
+
+    .location-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .map-box { border: 0; width: 100%; min-height: 390px; border-radius: var(--radius); filter: saturate(1.05) contrast(1.03); }
+    .hours { display: grid; gap: 10px; margin-top: 22px; }
+    .hours div { display: flex; justify-content: space-between; gap: 20px; border-bottom: 1px solid rgba(255,255,255,.08); padding-bottom: 10px; color: var(--muted); }
+    .hours strong { color: var(--text); }
+
+    .cta { padding: 78px 0 96px; }
+    .cta-box { text-align: center; border-radius: 38px; padding: 58px 26px; background: linear-gradient(135deg, rgba(255,189,53,.22), rgba(255,107,26,.18)), var(--card-2); border: 1px solid rgba(255,255,255,.12); box-shadow: var(--shadow); }
+    .cta-box h2 { margin-bottom: 14px; }
+    .cta-box p { color: var(--muted); max-width: 620px; margin: 0 auto 26px; }
+
+    footer { border-top: 1px solid rgba(255,255,255,.08); padding: 28px 0; color: var(--muted); }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; font-size: .92rem; }
+    .mobile-cta { display: none; }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hero-grid, .split, .location-grid { grid-template-columns: 1fr; }
+      .hero { padding-top: 48px; }
+      .hero-visual { min-height: 430px; }
+      .quick-info, .menu-grid { grid-template-columns: 1fr; }
+      .section-head { display: block; }
+      .section-head p { margin-top: 12px; }
+      .float-1 { width: 195px; }
+      .float-3 { display: none; }
+      .egg-plate { inset: 84px 18px auto auto; width: 300px; }
+      .mobile-cta { display: flex; position: fixed; left: 14px; right: 14px; bottom: 14px; z-index: 999; gap: 10px; }
+      .mobile-cta .btn { flex: 1; padding: 13px 10px; font-size: .88rem; }
+      footer { padding-bottom: 88px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="logo" aria-label="Egglicious Sydney home">
+        <span class="logo-mark">🥚</span>
+        <span>Egglicious Sydney</span>
+      </a>
+      <div class="nav-links">
+        <a href="#menu">Menu</a>
+        <a href="#about">About</a>
+        <a href="#location">Location</a>
+        <a href="tel:0452371372">Call</a>
+      </div>
+      <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&destination=133+Stephen+St,+Blacktown+NSW+2148" target="_blank" rel="noopener">Get Directions</a>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="badge">🔥 Surti-style egg street food in Blacktown</div>
+          <h1>Egg dishes with <span>proper masala.</span></h1>
+          <p>Craving Indian-style egg food? Egglicious Sydney serves bold, spicy and satisfying egg favourites — from bhurji and omelettes to rich gravy delights, pav sides and takeaway classics.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="tel:0452371372">Call 0452 371 372</a>
+            <a class="btn btn-ghost" href="https://www.ubereats.com/au/store/egglicious-sydney/n2RVASJCUK2feD5rKGhfIA" target="_blank" rel="noopener">Order on Uber Eats</a>
+          </div>
+          <div class="quick-info">
+            <div class="info-card"><strong>Location</strong><span>133 Stephen St, Blacktown</span></div>
+            <div class="info-card"><strong>Food Style</strong><span>Indian egg street food</span></div>
+            <div class="info-card"><strong>Good For</strong><span>Dinner, takeaway, cravings</span></div>
+          </div>
+        </div>
+        <div class="hero-visual" aria-label="Egglicious food illustration">
+          <div class="egg-plate"></div>
+          <div class="floating-card float-1"><h3>Popular picks</h3><p>Egg Bhurji, Surti Gotalo, Egg Malai & Masala Half Fried.</p></div>
+          <div class="floating-card float-2"><h3>Find us</h3><p>Food truck at 133 Stephen St, Blacktown NSW 2148.</p></div>
+          <div class="floating-card float-3"><h3>Spicy. Creamy. Filling.</h3><p>Made for serious egg lovers.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="menu">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Menu Highlights</div>
+            <h2>What to try first</h2>
+          </div>
+          <p>Use this section as a clean preview. Final prices and item availability should be confirmed directly with the business or delivery platform.</p>
+        </div>
+        <div class="menu-grid">
+          <article class="menu-card"><div class="icon">🍳</div><h3>Egg Bhurji</h3><p>Scrambled eggs cooked with onion, tomato, chilli and Indian spices, served with pav.</p><span class="price">Popular starter</span></article>
+          <article class="menu-card"><div class="icon">🔥</div><h3>Surti Gotalo</h3><p>A rich Surti-style egg favourite with bold masala flavour and proper street-food energy.</p><span class="price">Customer favourite</span></article>
+          <article class="menu-card"><div class="icon">🥘</div><h3>Egg Malai</h3><p>Creamy white gravy egg dish for people who like smooth, rich and comforting flavours.</p><span class="price">Gravy delight</span></article>
+          <article class="menu-card"><div class="icon">🌶️</div><h3>Masala Half Fried</h3><p>Half-fried eggs seasoned with green or red spice blends for a spicy quick bite.</p><span class="price">Spicy pick</span></article>
+          <article class="menu-card"><div class="icon">🧀</div><h3>Cheese Omelette</h3><p>Soft omelette stuffed with melted cheese, made simple but satisfying.</p><span class="price">Comfort option</span></article>
+          <article class="menu-card"><div class="icon">🥤</div><h3>Sides & Drinks</h3><p>Pair your dish with pav, masala pav and drinks for a full late-night-style feed.</p><span class="price">Add-ons available</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container split">
+        <div class="panel">
+          <div class="eyebrow">Why Egglicious?</div>
+          <h3>Built for egg lovers, not boring eaters.</h3>
+          <p>This website positions Egglicious Sydney clearly: strong local location, Indian egg-specialist menu, fast contact buttons, delivery links and Google Maps directions.</p>
+          <div class="features">
+            <div class="feature"><span>✓</span><div><b>Clear call button</b><br><span>Customers can call directly from mobile.</span></div></div>
+            <div class="feature"><span>✓</span><div><b>Delivery link</b><br><span>Uber Eats button sends hungry customers straight to ordering.</span></div></div>
+            <div class="feature"><span>✓</span><div><b>Location-first layout</b><br><span>Address and directions are repeated so customers do not get lost.</span></div></div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="eyebrow">For the owner</div>
+          <h3>This is a practical sales demo.</h3>
+          <p>Do not overcomplicate it. Restaurant owners care about calls, directions, orders and visibility — not fancy animations that do nothing.</p>
+          <div class="features">
+            <div class="feature"><span>📍</span><div><b>Google Maps embedded</b><br><span>Visitors can see the exact Blacktown location.</span></div></div>
+            <div class="feature"><span>📱</span><div><b>Mobile friendly</b><br><span>The bottom call/direction buttons stay visible on phones.</span></div></div>
+            <div class="feature"><span>⚡</span><div><b>One-file setup</b><br><span>Upload only index.html to GitHub Pages and the site works.</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="location">
+      <div class="container location-grid">
+        <div class="panel">
+          <div class="eyebrow">Visit Us</div>
+          <h2>Find Egglicious Sydney</h2>
+          <p><strong>Address:</strong><br>133 Stephen St, Blacktown NSW 2148</p>
+          <div class="hours">
+            <div><strong>Monday - Thursday</strong><span>11:00am - 9:00pm*</span></div>
+            <div><strong>Friday - Saturday</strong><span>11:00am - late*</span></div>
+            <div><strong>Sunday</strong><span>Check before visiting*</span></div>
+          </div>
+          <p style="margin-top:18px;font-size:.9rem;">*Hours should be confirmed with the business before publishing. Replace this section with the owner’s confirmed trading hours.</p>
+          <div class="hero-actions" style="margin-top:24px;margin-bottom:0;">
+            <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&destination=133+Stephen+St,+Blacktown+NSW+2148" target="_blank" rel="noopener">Open Google Maps</a>
+            <a class="btn btn-ghost" href="tel:0452371372">Call Now</a>
+          </div>
+        </div>
+        <iframe class="map-box" title="Egglicious Sydney map" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=133%20Stephen%20St%2C%20Blacktown%20NSW%202148&output=embed"></iframe>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <div class="cta-box">
+          <div class="eyebrow">Hungry?</div>
+          <h2>Call, visit or order online.</h2>
+          <p>Egglicious Sydney is made for people who want egg dishes with real Indian street-food flavour. Save the address and pull up when the craving hits.</p>
+          <div class="hero-actions" style="justify-content:center;margin-bottom:0;">
+            <a class="btn btn-primary" href="tel:0452371372">Call 0452 371 372</a>
+            <a class="btn btn-ghost" href="https://www.ubereats.com/au/store/egglicious-sydney/n2RVASJCUK2feD5rKGhfIA" target="_blank" rel="noopener">Order on Uber Eats</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2026 Egglicious Sydney. Demo website.</span>
+      <span>Made for local search, calls, directions and online orders.</span>
+    </div>
+  </footer>
+
+  <div class="mobile-cta" aria-label="Mobile quick actions">
+    <a class="btn btn-primary" href="tel:0452371372">Call</a>
+    <a class="btn btn-ghost" href="https://www.google.com/maps/dir/?api=1&destination=133+Stephen+St,+Blacktown+NSW+2148" target="_blank" rel="noopener">Directions</a>
+  </div>
+</body>
+</html>
