@@ -10,16 +10,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #120b06;
-      --card: #21130a;
-      --card-2: #2b190d;
-      --text: #fff9ef;
-      --muted: #dcc8ae;
-      --gold: #ffbd35;
-      --orange: #ff6b1a;
-      --red: #d9301d;
-      --cream: #fff1d2;
-      --shadow: 0 18px 60px rgba(0,0,0,.35);
+      --bg: #fff8ec;
+      --surface: #ffffff;
+      --surface-warm: #fff0d6;
+      --dark: #1c1008;
+      --brown: #40230f;
+      --text: #2a170b;
+      --muted: #74543a;
+      --gold: #f7b733;
+      --orange: #f26a1b;
+      --red: #b92f17;
+      --cream: #fff6df;
+      --line: rgba(64, 35, 15, .12);
+      --shadow: 0 22px 60px rgba(72, 39, 13, .14);
+      --heavy-shadow: 0 30px 90px rgba(28, 16, 8, .28);
       --radius: 28px;
     }
 
@@ -27,7 +31,9 @@
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: radial-gradient(circle at top left, rgba(255,189,53,.22), transparent 32%), var(--bg);
+      background:
+        radial-gradient(circle at top left, rgba(247,183,51,.30), transparent 30%),
+        linear-gradient(180deg, #fff7e8 0%, #fffaf1 42%, #ffffff 100%);
       color: var(--text);
       line-height: 1.6;
       overflow-x: hidden;
@@ -38,119 +44,202 @@
 
     .nav {
       position: sticky; top: 0; z-index: 1000;
-      background: rgba(18, 11, 6, .82);
+      background: rgba(255, 248, 236, .82);
       backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(255,255,255,.08);
+      border-bottom: 1px solid rgba(64,35,15,.10);
     }
-    .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 16px 0; }
-    .logo { display: flex; align-items: center; gap: 11px; font-weight: 900; letter-spacing: -.04em; font-size: 1.25rem; }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 14px 0; }
+    .logo { display: flex; align-items: center; gap: 12px; font-weight: 900; letter-spacing: -.04em; font-size: 1.2rem; color: var(--brown); }
     .logo-mark {
-      width: 42px; height: 42px; border-radius: 50%;
+      width: 42px; height: 42px; border-radius: 16px;
       background: linear-gradient(135deg, var(--gold), var(--orange));
-      display: grid; place-items: center; color: #351400; box-shadow: 0 10px 30px rgba(255,107,26,.35);
+      display: grid; place-items: center; color: #351400; box-shadow: 0 12px 30px rgba(242,106,27,.28);
+      font-size: 1.35rem;
     }
-    .nav-links { display: flex; align-items: center; gap: 24px; font-size: .95rem; color: var(--muted); font-weight: 700; }
-    .nav-links a:hover { color: var(--gold); }
+    .nav-links { display: flex; align-items: center; gap: 24px; font-size: .94rem; color: var(--muted); font-weight: 800; }
+    .nav-links a:hover { color: var(--orange); }
     .btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 10px;
       border: 0; border-radius: 999px; padding: 13px 20px;
       font-weight: 900; cursor: pointer; transition: .2s ease;
+      white-space: nowrap;
     }
-    .btn-primary { background: linear-gradient(135deg, var(--gold), var(--orange)); color: #2a1103; box-shadow: 0 16px 36px rgba(255,107,26,.3); }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 22px 46px rgba(255,107,26,.42); }
-    .btn-ghost { border: 1px solid rgba(255,255,255,.18); color: var(--cream); background: rgba(255,255,255,.06); }
-    .btn-ghost:hover { background: rgba(255,255,255,.12); }
+    .btn-primary { background: linear-gradient(135deg, var(--gold), var(--orange)); color: #2a1103; box-shadow: 0 16px 36px rgba(242,106,27,.26); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 22px 46px rgba(242,106,27,.38); }
+    .btn-ghost { border: 1px solid rgba(64,35,15,.18); color: var(--brown); background: rgba(255,255,255,.62); }
+    .btn-ghost:hover { background: #fff; transform: translateY(-2px); }
 
-    .hero { padding: 82px 0 52px; position: relative; }
-    .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 46px; align-items: center; }
-    .badge { display: inline-flex; align-items: center; gap: 10px; padding: 9px 14px; border: 1px solid rgba(255,189,53,.3); background: rgba(255,189,53,.08); color: var(--gold); border-radius: 999px; font-weight: 800; margin-bottom: 22px; }
-    h1 { font-size: clamp(3rem, 7vw, 6.7rem); line-height: .9; letter-spacing: -.075em; margin-bottom: 22px; }
-    h1 span { color: var(--gold); text-shadow: 0 0 45px rgba(255,189,53,.25); }
-    .hero p { color: var(--muted); max-width: 620px; font-size: 1.13rem; margin-bottom: 28px; }
+    .hero {
+      position: relative;
+      color: var(--cream);
+      padding: 92px 0 72px;
+      isolation: isolate;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(28,16,8,.95), rgba(28,16,8,.76) 48%, rgba(28,16,8,.40)),
+        url('images/hero-egg-dish.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(247,183,51,.24), transparent 28%),
+        radial-gradient(circle at 82% 15%, rgba(242,106,27,.22), transparent 34%);
+      pointer-events: none;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; gap: 46px; align-items: center; }
+    .badge { display: inline-flex; align-items: center; gap: 10px; padding: 9px 14px; border: 1px solid rgba(247,183,51,.34); background: rgba(247,183,51,.12); color: var(--gold); border-radius: 999px; font-weight: 900; margin-bottom: 22px; }
+    h1 { font-size: clamp(3rem, 7vw, 6.8rem); line-height: .9; letter-spacing: -.075em; margin-bottom: 22px; }
+    h1 span { color: var(--gold); text-shadow: 0 0 45px rgba(247,183,51,.25); }
+    .hero p { color: rgba(255,246,223,.86); max-width: 630px; font-size: 1.14rem; margin-bottom: 28px; }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 28px; }
+    .hero .btn-ghost { color: var(--cream); background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.22); }
+    .hero .btn-ghost:hover { background: rgba(255,255,255,.16); }
     .quick-info { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 32px; }
-    .info-card { background: rgba(255,255,255,.055); border: 1px solid rgba(255,255,255,.09); border-radius: 20px; padding: 16px; }
-    .info-card strong { display: block; color: var(--gold); font-size: .9rem; margin-bottom: 4px; }
-    .info-card span { color: var(--cream); font-weight: 800; font-size: .93rem; }
+    .info-card { background: rgba(255,255,255,.09); border: 1px solid rgba(255,255,255,.13); border-radius: 20px; padding: 16px; backdrop-filter: blur(12px); }
+    .info-card strong { display: block; color: var(--gold); font-size: .88rem; margin-bottom: 4px; }
+    .info-card span { color: #fff; font-weight: 800; font-size: .92rem; }
 
     .hero-visual {
-      min-height: 560px; position: relative; border-radius: 40px; padding: 26px;
-      background: linear-gradient(145deg, rgba(255,189,53,.18), rgba(255,107,26,.08));
-      border: 1px solid rgba(255,255,255,.11);
-      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+    .photo-tile {
+      min-height: 250px;
+      border-radius: 34px;
       overflow: hidden;
+      position: relative;
+      border: 1px solid rgba(255,255,255,.16);
+      box-shadow: var(--heavy-shadow);
+      background: linear-gradient(135deg, rgba(247,183,51,.35), rgba(242,106,27,.25));
     }
-    .egg-plate {
-      position: absolute; inset: 42px 24px auto auto; width: min(440px, 86%); aspect-ratio: 1;
-      border-radius: 50%; background:
-        radial-gradient(circle at 50% 50%, #ffb329 0 17%, transparent 18%),
-        radial-gradient(circle at 50% 50%, #fff7db 0 44%, transparent 45%),
-        radial-gradient(circle at 50% 50%, #7a2515 0 58%, transparent 59%),
-        radial-gradient(circle at 50% 50%, #ff6b1a 0 70%, transparent 71%);
-      box-shadow: 0 35px 80px rgba(0,0,0,.38), inset 0 -20px 35px rgba(0,0,0,.2);
+    .photo-tile img { width: 100%; height: 100%; object-fit: cover; }
+    .photo-tile.large { grid-row: span 2; min-height: 540px; }
+    .photo-caption {
+      position: absolute;
+      left: 16px; right: 16px; bottom: 16px;
+      padding: 16px;
+      border-radius: 20px;
+      background: rgba(28,16,8,.78);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,.14);
     }
-    .egg-plate::before, .egg-plate::after {
-      content: ''; position: absolute; border-radius: 999px; background: rgba(255,255,255,.15);
-      filter: blur(.5px);
-    }
-    .egg-plate::before { width: 170px; height: 28px; left: 70px; top: 86px; transform: rotate(-18deg); }
-    .egg-plate::after { width: 130px; height: 22px; right: 60px; bottom: 92px; transform: rotate(-28deg); }
-    .floating-card { position: absolute; background: rgba(18,11,6,.86); border: 1px solid rgba(255,255,255,.12); border-radius: 24px; padding: 18px; box-shadow: var(--shadow); }
-    .floating-card h3 { color: var(--gold); font-size: 1rem; margin-bottom: 6px; }
-    .floating-card p { color: var(--muted); font-weight: 700; font-size: .92rem; }
-    .float-1 { left: 28px; top: 46px; width: 215px; }
-    .float-2 { right: 26px; bottom: 36px; width: 238px; }
-    .float-3 { left: 34px; bottom: 86px; width: 220px; }
+    .photo-caption b { display: block; color: #fff; line-height: 1.2; }
+    .photo-caption span { color: rgba(255,246,223,.78); font-size: .88rem; font-weight: 700; }
 
-    section { padding: 72px 0; }
+    section { padding: 76px 0; }
     .section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 34px; }
-    .eyebrow { color: var(--gold); font-weight: 900; text-transform: uppercase; letter-spacing: .12em; font-size: .82rem; margin-bottom: 8px; }
-    h2 { font-size: clamp(2rem, 4vw, 3.4rem); line-height: 1; letter-spacing: -.055em; }
-    .section-head p { color: var(--muted); max-width: 470px; }
+    .eyebrow { color: var(--orange); font-weight: 900; text-transform: uppercase; letter-spacing: .12em; font-size: .82rem; margin-bottom: 8px; }
+    h2 { font-size: clamp(2rem, 4vw, 3.4rem); line-height: 1; letter-spacing: -.055em; color: var(--brown); }
+    .section-head p { color: var(--muted); max-width: 500px; }
 
-    .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .menu-card { background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.1); border-radius: var(--radius); padding: 24px; position: relative; overflow: hidden; min-height: 215px; }
-    .menu-card::after { content: ''; position: absolute; width: 120px; height: 120px; border-radius: 50%; right: -38px; top: -38px; background: rgba(255,189,53,.12); }
-    .menu-card .icon { width: 54px; height: 54px; border-radius: 18px; background: rgba(255,189,53,.14); display: grid; place-items: center; font-size: 1.55rem; margin-bottom: 18px; }
-    .menu-card h3 { font-size: 1.26rem; margin-bottom: 8px; letter-spacing: -.025em; }
-    .menu-card p { color: var(--muted); margin-bottom: 18px; }
-    .price { color: var(--gold); font-weight: 900; }
+    .photo-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: -36px;
+      position: relative;
+      z-index: 5;
+    }
+    .strip-card {
+      height: 255px;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 8px solid #fff;
+      background: var(--surface-warm);
+    }
+    .strip-card img { width: 100%; height: 100%; object-fit: cover; }
+
+    .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .menu-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: .22s ease;
+      min-height: 100%;
+    }
+    .menu-card:hover { transform: translateY(-6px); box-shadow: 0 28px 70px rgba(72,39,13,.20); }
+    .menu-photo { height: 205px; background: linear-gradient(135deg, #ffe3aa, #f26a1b); overflow: hidden; }
+    .menu-photo img { width: 100%; height: 100%; object-fit: cover; transition: .28s ease; }
+    .menu-card:hover .menu-photo img { transform: scale(1.05); }
+    .menu-body { padding: 22px; }
+    .menu-card h3 { font-size: 1.28rem; margin-bottom: 8px; letter-spacing: -.025em; color: var(--brown); }
+    .menu-card p { color: var(--muted); margin-bottom: 16px; }
+    .price { color: var(--orange); font-weight: 900; }
 
     .split { display: grid; grid-template-columns: .88fr 1.12fr; gap: 26px; align-items: stretch; }
-    .panel { background: var(--card); border: 1px solid rgba(255,255,255,.1); border-radius: var(--radius); padding: 30px; box-shadow: var(--shadow); }
-    .panel h3 { font-size: 1.6rem; margin-bottom: 12px; letter-spacing: -.04em; }
+    .panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px; box-shadow: var(--shadow); }
+    .panel.dark { background: linear-gradient(145deg, #241207, #3a1d0c); color: var(--cream); border-color: rgba(255,255,255,.12); }
+    .panel h3 { font-size: 1.6rem; margin-bottom: 12px; letter-spacing: -.04em; color: var(--brown); }
+    .panel.dark h3 { color: #fff; }
     .panel p, .panel li { color: var(--muted); }
+    .panel.dark p, .panel.dark li { color: rgba(255,246,223,.78); }
     .features { display: grid; gap: 14px; margin-top: 22px; }
-    .feature { display: flex; gap: 13px; align-items: flex-start; padding: 14px; background: rgba(255,255,255,.055); border-radius: 18px; }
-    .feature b { color: var(--cream); }
-    .feature span:first-child { color: var(--gold); font-size: 1.2rem; }
+    .feature { display: flex; gap: 13px; align-items: flex-start; padding: 14px; background: #fff7e8; border-radius: 18px; border: 1px solid var(--line); }
+    .panel.dark .feature { background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.10); }
+    .feature b { color: var(--brown); }
+    .panel.dark .feature b { color: #fff; }
+    .feature span:first-child { color: var(--orange); font-size: 1.2rem; }
 
     .location-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
-    .map-box { border: 0; width: 100%; min-height: 390px; border-radius: var(--radius); filter: saturate(1.05) contrast(1.03); }
+    .map-box { border: 0; width: 100%; min-height: 390px; border-radius: var(--radius); filter: saturate(1.05) contrast(1.03); box-shadow: var(--shadow); }
     .hours { display: grid; gap: 10px; margin-top: 22px; }
-    .hours div { display: flex; justify-content: space-between; gap: 20px; border-bottom: 1px solid rgba(255,255,255,.08); padding-bottom: 10px; color: var(--muted); }
+    .hours div { display: flex; justify-content: space-between; gap: 20px; border-bottom: 1px solid rgba(64,35,15,.10); padding-bottom: 10px; color: var(--muted); }
     .hours strong { color: var(--text); }
 
     .cta { padding: 78px 0 96px; }
-    .cta-box { text-align: center; border-radius: 38px; padding: 58px 26px; background: linear-gradient(135deg, rgba(255,189,53,.22), rgba(255,107,26,.18)), var(--card-2); border: 1px solid rgba(255,255,255,.12); box-shadow: var(--shadow); }
-    .cta-box h2 { margin-bottom: 14px; }
-    .cta-box p { color: var(--muted); max-width: 620px; margin: 0 auto 26px; }
+    .cta-box {
+      text-align: center;
+      border-radius: 38px;
+      padding: 58px 26px;
+      background:
+        linear-gradient(135deg, rgba(28,16,8,.88), rgba(64,35,15,.76)),
+        url('images/cta-egg-dish.jpg');
+      background-size: cover;
+      background-position: center;
+      color: var(--cream);
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: var(--heavy-shadow);
+      overflow: hidden;
+    }
+    .cta-box h2 { margin-bottom: 14px; color: #fff; }
+    .cta-box p { color: rgba(255,246,223,.78); max-width: 620px; margin: 0 auto 26px; }
+    .cta-box .btn-ghost { color: var(--cream); background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.22); }
 
-    footer { border-top: 1px solid rgba(255,255,255,.08); padding: 28px 0; color: var(--muted); }
+    footer { border-top: 1px solid rgba(64,35,15,.10); padding: 28px 0; color: var(--muted); background: #fff; }
     .footer-inner { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; font-size: .92rem; }
     .mobile-cta { display: none; }
 
-    @media (max-width: 900px) {
-      .nav-links { display: none; }
+    @media (max-width: 980px) {
       .hero-grid, .split, .location-grid { grid-template-columns: 1fr; }
-      .hero { padding-top: 48px; }
-      .hero-visual { min-height: 430px; }
+      .hero-visual { grid-template-columns: 1fr 1fr; }
+      .photo-tile.large { min-height: 420px; }
       .quick-info, .menu-grid { grid-template-columns: 1fr; }
+      .photo-strip { grid-template-columns: 1fr; margin-top: 22px; }
+      .strip-card { height: 235px; }
+    }
+
+    @media (max-width: 700px) {
+      .nav-links { display: none; }
+      .nav-inner { padding: 12px 0; }
+      .nav .btn-primary { display: none; }
+      .hero { padding: 58px 0 48px; }
+      h1 { font-size: clamp(3rem, 15vw, 4.6rem); }
+      .hero-visual { grid-template-columns: 1fr; }
+      .photo-tile, .photo-tile.large { min-height: 265px; }
       .section-head { display: block; }
       .section-head p { margin-top: 12px; }
-      .float-1 { width: 195px; }
-      .float-3 { display: none; }
-      .egg-plate { inset: 84px 18px auto auto; width: 300px; }
+      .quick-info { gap: 10px; }
+      section { padding: 58px 0; }
       .mobile-cta { display: flex; position: fixed; left: 14px; right: 14px; bottom: 14px; z-index: 999; gap: 10px; }
       .mobile-cta .btn { flex: 1; padding: 13px 10px; font-size: .88rem; }
       footer { padding-bottom: 88px; }
@@ -161,7 +250,7 @@
   <nav class="nav">
     <div class="container nav-inner">
       <a href="#top" class="logo" aria-label="Egglicious Sydney home">
-        <span class="logo-mark">🥚</span>
+        <span class="logo-mark">E</span>
         <span>Egglicious Sydney</span>
       </a>
       <div class="nav-links">
@@ -178,9 +267,9 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <div class="badge">🔥 Surti-style egg street food in Blacktown</div>
+          <div class="badge">Surti-style egg street food in Blacktown</div>
           <h1>Egg dishes with <span>proper masala.</span></h1>
-          <p>Craving Indian-style egg food? Egglicious Sydney serves bold, spicy and satisfying egg favourites — from bhurji and omelettes to rich gravy delights, pav sides and takeaway classics.</p>
+          <p>Bold Indian-style egg food made for serious cravings — bhurji, Surti gotalo, creamy gravy dishes, pav sides and takeaway favourites from Egglicious Sydney.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="tel:0452371372">Call 0452 371 372</a>
             <a class="btn btn-ghost" href="https://www.ubereats.com/au/store/egglicious-sydney/n2RVASJCUK2feD5rKGhfIA" target="_blank" rel="noopener">Order on Uber Eats</a>
@@ -188,17 +277,32 @@
           <div class="quick-info">
             <div class="info-card"><strong>Location</strong><span>133 Stephen St, Blacktown</span></div>
             <div class="info-card"><strong>Food Style</strong><span>Indian egg street food</span></div>
-            <div class="info-card"><strong>Good For</strong><span>Dinner, takeaway, cravings</span></div>
+            <div class="info-card"><strong>Best For</strong><span>Dinner, takeaway, cravings</span></div>
           </div>
         </div>
-        <div class="hero-visual" aria-label="Egglicious food illustration">
-          <div class="egg-plate"></div>
-          <div class="floating-card float-1"><h3>Popular picks</h3><p>Egg Bhurji, Surti Gotalo, Egg Malai & Masala Half Fried.</p></div>
-          <div class="floating-card float-2"><h3>Find us</h3><p>Food truck at 133 Stephen St, Blacktown NSW 2148.</p></div>
-          <div class="floating-card float-3"><h3>Spicy. Creamy. Filling.</h3><p>Made for serious egg lovers.</p></div>
+
+        <div class="hero-visual" aria-label="Egglicious food photos">
+          <div class="photo-tile large">
+            <img src="images/surti-gotalo.jpg" alt="Surti-style egg dish with masala" loading="lazy">
+            <div class="photo-caption"><b>Surti Gotalo</b><span>Rich, spicy and filling</span></div>
+          </div>
+          <div class="photo-tile">
+            <img src="images/egg-bhurji.jpg" alt="Egg bhurji with pav" loading="lazy">
+            <div class="photo-caption"><b>Egg Bhurji</b><span>Classic masala favourite</span></div>
+          </div>
+          <div class="photo-tile">
+            <img src="images/egg-malai.jpg" alt="Creamy egg malai curry" loading="lazy">
+            <div class="photo-caption"><b>Egg Malai</b><span>Creamy gravy comfort</span></div>
+          </div>
         </div>
       </div>
     </section>
+
+    <div class="container photo-strip" aria-label="Egglicious food preview photos">
+      <div class="strip-card"><img src="images/egg-bhurji.jpg" alt="Egg Bhurji"></div>
+      <div class="strip-card"><img src="images/masala-half-fried.jpg" alt="Masala Half Fried"></div>
+      <div class="strip-card"><img src="images/cheese-omelette.jpg" alt="Cheese Omelette"></div>
+    </div>
 
     <section id="menu">
       <div class="container">
@@ -207,25 +311,49 @@
             <div class="eyebrow">Menu Highlights</div>
             <h2>What to try first</h2>
           </div>
-          <p>Use this section as a clean preview. Final prices and item availability should be confirmed directly with the business or delivery platform.</p>
+          <p>Real photos sell food better than icons. Replace these image files with owner-approved food photos before showing this to the business seriously.</p>
         </div>
+
         <div class="menu-grid">
-          <article class="menu-card"><div class="icon">🍳</div><h3>Egg Bhurji</h3><p>Scrambled eggs cooked with onion, tomato, chilli and Indian spices, served with pav.</p><span class="price">Popular starter</span></article>
-          <article class="menu-card"><div class="icon">🔥</div><h3>Surti Gotalo</h3><p>A rich Surti-style egg favourite with bold masala flavour and proper street-food energy.</p><span class="price">Customer favourite</span></article>
-          <article class="menu-card"><div class="icon">🥘</div><h3>Egg Malai</h3><p>Creamy white gravy egg dish for people who like smooth, rich and comforting flavours.</p><span class="price">Gravy delight</span></article>
-          <article class="menu-card"><div class="icon">🌶️</div><h3>Masala Half Fried</h3><p>Half-fried eggs seasoned with green or red spice blends for a spicy quick bite.</p><span class="price">Spicy pick</span></article>
-          <article class="menu-card"><div class="icon">🧀</div><h3>Cheese Omelette</h3><p>Soft omelette stuffed with melted cheese, made simple but satisfying.</p><span class="price">Comfort option</span></article>
-          <article class="menu-card"><div class="icon">🥤</div><h3>Sides & Drinks</h3><p>Pair your dish with pav, masala pav and drinks for a full late-night-style feed.</p><span class="price">Add-ons available</span></article>
+          <article class="menu-card">
+            <div class="menu-photo"><img src="images/egg-bhurji.jpg" alt="Egg Bhurji" loading="lazy"></div>
+            <div class="menu-body"><h3>Egg Bhurji</h3><p>Scrambled eggs cooked with onion, tomato, chilli and Indian spices, served with pav.</p><span class="price">Popular starter</span></div>
+          </article>
+
+          <article class="menu-card">
+            <div class="menu-photo"><img src="images/surti-gotalo.jpg" alt="Surti Gotalo" loading="lazy"></div>
+            <div class="menu-body"><h3>Surti Gotalo</h3><p>A rich Surti-style egg favourite with bold masala flavour and proper street-food energy.</p><span class="price">Customer favourite</span></div>
+          </article>
+
+          <article class="menu-card">
+            <div class="menu-photo"><img src="images/egg-malai.jpg" alt="Egg Malai" loading="lazy"></div>
+            <div class="menu-body"><h3>Egg Malai</h3><p>Creamy white gravy egg dish for people who like smooth, rich and comforting flavours.</p><span class="price">Gravy delight</span></div>
+          </article>
+
+          <article class="menu-card">
+            <div class="menu-photo"><img src="images/masala-half-fried.jpg" alt="Masala Half Fried" loading="lazy"></div>
+            <div class="menu-body"><h3>Masala Half Fried</h3><p>Half-fried eggs seasoned with green or red spice blends for a spicy quick bite.</p><span class="price">Spicy pick</span></div>
+          </article>
+
+          <article class="menu-card">
+            <div class="menu-photo"><img src="images/cheese-omelette.jpg" alt="Cheese Omelette" loading="lazy"></div>
+            <div class="menu-body"><h3>Cheese Omelette</h3><p>Soft omelette stuffed with melted cheese, made simple but satisfying.</p><span class="price">Comfort option</span></div>
+          </article>
+
+          <article class="menu-card">
+            <div class="menu-photo"><img src="images/pav-drinks.jpg" alt="Pav and drinks" loading="lazy"></div>
+            <div class="menu-body"><h3>Sides & Drinks</h3><p>Pair your dish with pav, masala pav and drinks for a full late-night-style feed.</p><span class="price">Add-ons available</span></div>
+          </article>
         </div>
       </div>
     </section>
 
     <section id="about">
       <div class="container split">
-        <div class="panel">
+        <div class="panel dark">
           <div class="eyebrow">Why Egglicious?</div>
           <h3>Built for egg lovers, not boring eaters.</h3>
-          <p>This website positions Egglicious Sydney clearly: strong local location, Indian egg-specialist menu, fast contact buttons, delivery links and Google Maps directions.</p>
+          <p>This version looks more like a real food business website: warm colours, strong photos, clear order buttons, and less fake demo styling.</p>
           <div class="features">
             <div class="feature"><span>✓</span><div><b>Clear call button</b><br><span>Customers can call directly from mobile.</span></div></div>
             <div class="feature"><span>✓</span><div><b>Delivery link</b><br><span>Uber Eats button sends hungry customers straight to ordering.</span></div></div>
@@ -234,12 +362,12 @@
         </div>
         <div class="panel">
           <div class="eyebrow">For the owner</div>
-          <h3>This is a practical sales demo.</h3>
-          <p>Do not overcomplicate it. Restaurant owners care about calls, directions, orders and visibility — not fancy animations that do nothing.</p>
+          <h3>A practical sales demo, not a toy website.</h3>
+          <p>Restaurant owners care about calls, directions, orders and visibility. Fancy animations are useless if the food does not look tasty and the contact buttons are not obvious.</p>
           <div class="features">
             <div class="feature"><span>📍</span><div><b>Google Maps embedded</b><br><span>Visitors can see the exact Blacktown location.</span></div></div>
             <div class="feature"><span>📱</span><div><b>Mobile friendly</b><br><span>The bottom call/direction buttons stay visible on phones.</span></div></div>
-            <div class="feature"><span>⚡</span><div><b>One-file setup</b><br><span>Upload only index.html to GitHub Pages and the site works.</span></div></div>
+            <div class="feature"><span>⚡</span><div><b>One-file setup</b><br><span>Upload index.html plus an images folder to GitHub Pages.</span></div></div>
           </div>
         </div>
       </div>
